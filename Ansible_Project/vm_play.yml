@@ -1,0 +1,7 @@
+---
+-
+  name: 'Test playbook on ubuntu server'
+  hosts: DevNet
+  tasks:
+    - name: Execute command 'date'
+      command: date

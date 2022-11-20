@@ -1,0 +1,18 @@
+[Juniper_device]
+vMX_1 ansible_host=192.168.137.100
+vMX_2 ansible_host=192.168.137.101
+
+[Cisco_IOS]
+vIOS ansible_host=192.168.137.103
+
+[Cisco_NXOS]
+vNXOS ansible_host=192.168.137.102
+
+[ED_Routers]
+ED_Tope ansible_host=102.88.7.174
+ED_Henry ansible_host=102.89.15.22
+
+[datacenter:children]
+Juniper_device
+Cisco_IOS
+Cisco_NXOS

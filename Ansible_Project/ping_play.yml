@@ -1,0 +1,13 @@
+---
+- hosts: cisco
+  gather_facts: false
+  connection: local
+
+  tasks:
+    -  name: Make sure that we can connect to routers
+       ping:
+  
+    -  name: Show Run on Device
+       ios_command:
+         commands:
+            - show run

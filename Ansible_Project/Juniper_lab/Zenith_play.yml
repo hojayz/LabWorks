@@ -1,0 +1,29 @@
+---
+- name:  Get device uptime on Juniper devices
+  hosts:
+  - Juniper_device
+  collections:
+    - juniper.device
+  connection: netconf
+  gather_facts: yes
+
+  vars_prompt:
+    - name: username
+      prompt: Junos Username
+      private: no
+    - name: password
+      prompt: Junos Password
+      private: yes
+  
+  tasks:
+    - name: Getting system update
+      junos_facts:
+        provider:
+          host: "{{ ansible_host }}"
+          port: 22
+          user: "{{ username }}"
+          passwd: "{{ password }}"       
+
+    - name: Viell all Ansible fact keys
+      debug:
+        var: ansible_facts.keys()

@@ -1,0 +1,31 @@
+---
+- name: Checking Internet links
+  hosts: 
+    - ED_Routers
+  collections:
+    - juniper.device
+  connection: local
+  gather_facts: yes
+
+  vars_prompt:
+    - name: username
+      prompt: Junos Username
+      private: no
+    - name: password
+      prompt: Junos Password
+      private: yes
+
+  tasks:
+    - name: "Get the route on ED's router"
+      command:
+        host: "{{ ansible_host }}"
+        port: 22
+        user: "{{ username }}"
+        passwd: "{{ password }}"
+        commands:
+          - show route 0/0 exact
+      register: route
+    
+    - name: Display route
+      debug:
+        var: route["stdout_lines"]
