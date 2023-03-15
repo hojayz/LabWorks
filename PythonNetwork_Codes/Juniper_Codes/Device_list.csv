@@ -1,4 +1,2 @@
-SN, Device IP, Uplink Interface
-1, 192.168.137.154, ge-0/0/3
-2, 192.168.137.155, ge-0/0/3
-3, 192.168.137.152, ge-0/0/0
+SN,Device IP,Uplink Interface
+1,192.168.0.2,ge-0/0/23

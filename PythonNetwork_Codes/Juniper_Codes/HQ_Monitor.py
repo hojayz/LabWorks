@@ -1,11 +1,11 @@
-from jnpr.junos import  Device
-from jnpr.junos.op.ospf import OspfNeighborTable
-from jnpr.junos.op.phyport import PhyPortErrorTable, PhyPortTable
-from prettytable import PrettyTable
-from getpass import getpass
 import sys
 import csv
+from getpass import getpass
 from datetime import datetime
+from jnpr.junos import Device
+from jnpr.junos.op.phyport import PhyPortErrorTable, PhyPortTable
+from jnpr.junos.op.ospf import OspfNeighborTable
+from prettytable import PrettyTable
 
 not_installed_modules = []
 
@@ -16,7 +16,6 @@ except ImportError:
 
 try:
     from prettytable import PrettyTable
-except ImportError:
     not_installed_modules.append("prettytable")
 
 if not_installed_modules:
@@ -60,7 +59,7 @@ filename = "MyList.csv"
 
 def OspfLinkAge(dev, int):
     adj= OspfNeighborTable(dev).get(int)       
-    return adj.neighbor_adjacency_time
+    return adj.neighbor_adjacency_time  
 
 def FlapInt(dev, int):
     flap=PhyPortTable(dev).get(int)
